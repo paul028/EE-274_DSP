@@ -1,0 +1,8 @@
+%% EE 274 Digital Signal Processing 1 Lab Activity 1
+% Name: Paul Vincent S. Nonat
+%
+%% E. Quantization
+%Quantization is done by replacing each value of an analog signal $x(t)$ by
+%the value of the nearest quantization level. To exemplify this oepration,
+%let's simulate a unipolar ADC (Analog to Digital Co
+%
