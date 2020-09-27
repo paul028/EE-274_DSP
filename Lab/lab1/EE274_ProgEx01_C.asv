@@ -1,0 +1,48 @@
+%% EE 274 Digital Signal Processing 1 Lab Activity 1
+% Name: Paul Vincent S. Nonat
+%
+%% E. Quantization
+%Sampling is done by periodically obtaining samples from a continuous time
+%signal. The period also known as the sampling period is the reciprocal of
+%sampling frequency $F_s$. Using up-sampling and down-sampling, information
+%can be added or removed from a discrete time signal.
+%
+% # Load *signal1.wave* file in your workspace
+% # Using *[y,fs] = audioread()*, import the audio and sampling rate
+% information in your workspace.
+%
+[y,fs] = audioread('signal1.wav');
+%info=audioinfo('signal1.wav');
+t = 0:seconds(1/fs):seconds(info.Duration);
+t = t(1:end-1);
+
+plot(t,y)
+title('Original Audio')
+xlabel('Time')
+ylabel('Audio Signal')
+
+%%
+%y up-sampled by 2
+M=2
+y1= upsample(y,M)
+plot(y1)
+title('Up-sampled by 2')
+xlabel('Time')
+ylabel('Audio Signal')
+
+%%
+%y down-sampled by 2
+M=2
+y2= downsample(y,M)
+plot(y2)
+title('Down-sampled by 2')
+xlabel('Time')
+ylabel('Audio Signal')
+
+%%
+%y2 up-sampled by 2
+M=2
+y3 = upsample(y2,M)
+
+%%
+%y3 
