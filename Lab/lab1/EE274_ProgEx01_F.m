@@ -148,41 +148,41 @@ xlabel('Time')
 
 %%
 Pq1=sum((y1-y).^2);
-SQNR=10*log10(Px/Pq1)
+SQNR1=10*log10(Px/Pq1)
 soundsc(x1,target_sampling1)
 %%
 Pq2=sum((y2-y).^2);
-SQNR=10*log10(Px/Pq2)
+SQNR2=10*log10(Px/Pq2)
 soundsc(x2,target_sampling2)
 %%
 Pq3=sum((y3-y).^2);
-SQNR=10*log10(Px/Pq3)
+SQNR3=10*log10(Px/Pq3)
 soundsc(x3,target_sampling3)
 %%
 Pq4=sum((y4-y).^2);
-SQNR=10*log10(Px/Pq4)
+SQNR4=10*log10(Px/Pq4)
 soundsc(x4,target_sampling4)
 
 %%
 Pq5=sum((y5-y).^2);
-SQNR=10*log10(Px/Pq5)
+SQNR5=10*log10(Px/Pq5)
 soundsc(x5,target_sampling5)
 %%
 Pq6=sum((y6-y).^2);
-SQNR=10*log10(Px/Pq6)
+SQNR6=10*log10(Px/Pq6)
 soundsc(x6,target_sampling6)
 %%
 Pq7=sum((y7-y).^2);
-SQNR=10*log10(Px/Pq7)
+SQNR7=10*log10(Px/Pq7)
 soundsc(x7,target_sampling7)
 
 %%
 Pq8=sum((y8-y).^2);
-SQNR=10*log10(Px/Pq8)
+SQNR8=10*log10(Px/Pq8)
 soundsc(x8,target_sampling8)
 %%
 Pq9=sum((y9-y).^2);
-SQNR=10*log10(Px/Pq9)
+SQNR9=10*log10(Px/Pq9)
 soundsc(x9,target_sampling9)
 
 %%
