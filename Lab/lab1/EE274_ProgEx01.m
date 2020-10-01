@@ -30,12 +30,12 @@ soundsc(x1,fs1)
 soundsc(x2,fs2)
 
 %%
+% based from observation, the sine wave sampled at $F_s2$ does not
+% completely recovered the original sine wave at $f_o =1$kHz as compared to
+% $F_s1$ with frequency lower than $2F_max$, which leads to aliasing. 
+
+%%
 function [x, t] = sin_NU(fs, f0, T) %function to generate sine signal
 t = 0:1/fs:T; %the signal vector output
 x = sin(2*pi*f0*t); %the time vector output
 end
-
-%%
-% based from observation, the sine wave with sampled at $F_s2$ does not
-% completely recovered the original sine wave at $f_o =1$kHz as compared to
-% $F_s1$ with frequency lower than $2F_max$, which leads to aliasing. 

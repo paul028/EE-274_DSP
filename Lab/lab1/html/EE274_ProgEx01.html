@@ -6,7 +6,7 @@
    <!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>EE274_ProgEx01</title><meta name="generator" content="MATLAB 9.8"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2020-09-27"><meta name="DC.source" content="EE274_ProgEx01.m"><style type="text/css">
+      --><title>EE274_ProgEx01</title><meta name="generator" content="MATLAB 9.8"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2020-10-01"><meta name="DC.source" content="EE274_ProgEx01.m"><style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -68,7 +68,7 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 
 
   </style></head><body><div class="content"><h1></h1><!--introduction--><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">EE 274 Digital Signal Processing 1 Lab Activity 1</a></li><li><a href="#2">D. Aliasing</a></li></ul></div><h2 id="1">EE 274 Digital Signal Processing 1 Lab Activity 1</h2><p>Name: Paul Vincent S. Nonat</p><h2 id="2">D. Aliasing</h2><p>The following exercise investigates the effect of improper sampling.</p><div><ol><li>Generate two 1 kHz sine signals (2 seconds duration), first signal at 8 kHz sample frequency and second signal at 1.2 kHz sample frequency</li><li>On the same graph, use the plot function to display the two signals versus t in the range <img src="EE274_ProgEx01_eq06039907533450692140.png" alt="$0 \leq t \leq 5$" style="width:58px;height:12px;"> msec.</li><li>Listen to the two signals one after another using the function <b>soundsc (x, fs)</b>;</li><li>Compare the two signals. How does the sampling rate affect the digitized sound?</li></ol></div><pre class="codeinput">T = 2; <span class="comment">%parameters</span>
-f0 = 2000; <span class="comment">% 1kHz sine signal</span>
+f0 = 1000; <span class="comment">% 1kHz sine signal</span>
 fs1 = 8000; <span class="comment">% Sampling frequencies</span>
 fs2 = 1200;
 [x1, t1] = sin_NU(fs1,f0,T); <span class="comment">% sine signal sampled at fs1</span>
@@ -80,13 +80,13 @@ legend(<span class="string">'fs_1=8 kHz'</span>,<span class="string">'fs_2=1.2 k
 xlabel(<span class="string">'Time'</span>)
 ylabel(<span class="string">'Signals'</span>)
 title(<span class="string">'Audio aliasing'</span>);
-</pre><img vspace="5" hspace="5" src="EE274_ProgEx01_01.png" alt=""> <pre class="codeinput">soundsc(x1,fs1)
+</pre><pre class="codeinput">soundsc(x1,fs1)
 </pre><pre class="codeinput">soundsc(x2,fs2)
 </pre><pre class="codeinput"><span class="keyword">function</span> [x, t] = sin_NU(fs, f0, T) <span class="comment">%function to generate sine signal</span>
 t = 0:1/fs:T; <span class="comment">%the signal vector output</span>
 x = sin(2*pi*f0*t); <span class="comment">%the time vector output</span>
 <span class="keyword">end</span>
-</pre><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2020a</a><br></p></div><!--
+</pre><p>based from observation, the sine wave with sampled at <img src="EE274_ProgEx01_eq13925514905457031967.png" alt="$F_s2$" style="width:21px;height:13px;"> does not completely recovered the original sine wave at $f_o =1$kHz as compared to <img src="EE274_ProgEx01_eq00250297007660076585.png" alt="$F_s1$" style="width:21px;height:13px;"> with frequency lower than <img src="EE274_ProgEx01_eq07426264330839041685.png" alt="$2F_max$" style="width:42px;height:13px;">, which leads to aliasing.</p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2020a</a><br></p></div><!--
 ##### SOURCE BEGIN #####
 
 %% EE 274 Digital Signal Processing 1 Lab Activity 1
@@ -102,7 +102,7 @@ x = sin(2*pi*f0*t); <span class="comment">%the time vector output</span>
 
 %%
 T = 2; %parameters
-f0 = 2000; % 1kHz sine signal 
+f0 = 1000; % 1kHz sine signal 
 fs1 = 8000; % Sampling frequencies
 fs2 = 1200;
 [x1, t1] = sin_NU(fs1,f0,T); % sine signal sampled at fs1
@@ -124,5 +124,10 @@ function [x, t] = sin_NU(fs, f0, T) %function to generate sine signal
 t = 0:1/fs:T; %the signal vector output
 x = sin(2*pi*f0*t); %the time vector output
 end
+
+%%
+% based from observation, the sine wave with sampled at $F_s2$ does not
+% completely recovered the original sine wave at $f_o =1$kHz as compared to
+% $F_s1$ with frequency lower than $2F_max$, which leads to aliasing. 
 ##### SOURCE END #####
 --></body></html>
