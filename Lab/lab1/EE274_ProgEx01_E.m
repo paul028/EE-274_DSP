@@ -20,7 +20,7 @@
 R = 10;
 B = 3;
 x = -5:15;
-y = adc_NU(x,R,B);
+y = adc_uni(x,R,B);
 t = 0:length(x)-1;
 figure(11)
 plot(t,x,t,y)
@@ -34,7 +34,7 @@ ylabel('Signal magnitude in volts')
 axis([-0.1,20.1,-5.1,15.1]) 
 
 %%
-function y = adc_NU(x, R, B)
+function y = adc_uni(x, R, B)
 level = [0:R/(2^B):R-R/(2^B)];
 temp = [-Inf,(level(2:end)-R/(2^(B+1))),Inf];
 i=1

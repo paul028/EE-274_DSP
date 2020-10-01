@@ -99,16 +99,14 @@ title('Odd Part')
 % $$x_1(n) = \sum_{m=0}^{10}(m+1)[\delta(n-2m) - \delta(n-2m-1)]$
 %
 y=0
-N=25
-nn=0:N
-for n =0:N
+for n =0:25
 for m =0:10
-    temp=(m+1) .*( impseq(n-2*m,0,N) - impseq(n-(2*m)-1,0,N))
+    temp=(m+1) .*( impseq(n-2*m,0,24) - impseq(n-(2*m)-1,0,24))
     y=y+temp
 end
 end
 figure
-stem(nn,y)
+stem(y)
 xlabel('n')
 title('$x_1(n) = \sum_{m=0}^{10}(m+1)[\delta(n-2m) - \delta(n-2m-1)]$','interpreter','latex')
 
@@ -116,14 +114,13 @@ title('$x_1(n) = \sum_{m=0}^{10}(m+1)[\delta(n-2m) - \delta(n-2m-1)]$','interpre
 % $x_2(n) = n^2[ u(n+5) - u(n-6)] + 10\delta(n) +20(0.5)n[u(n-4)-u(n-10)]$
 %
 y=0
-N=25
-nn=0:N
+
 for n=0:25
-temp = n^2 .* (stepseq(n+5,0,N) - stepseq(n-6,0,N)) + (10 .* impseq(n,0,N)) + 20*(0.5)^n .*(stepseq(n-4,0,N) - stepseq(n-1,0,N)) 
+temp = n^2 .* (stepseq(n+5,0,25) - stepseq(n-6,0,25)) + (10 .* impseq(n,0,25)) + 20*(0.5)^n .*(stepseq(n-4,0,25) - stepseq(n-10,0,25)) 
 y=y+temp
 end
 figure
-stem(nn,y)
+stem(N,y)
 xlabel('n')
 title('$x_2(n) = n^2[ u(n+5) - u(n-6)] + 10\delta(n) +20(0.5)n[u(n-4)-u(n-10)]$','interpreter','latex')
 %%
@@ -141,20 +138,17 @@ title(' $x_3(n)= (0.9)^n cos(0.2\pi n + \frac{\pi}{3})$','interpreter','latex')
 % $x_4(n) = 10cos(0.0008\pi n^2) + w(n)$
 %
 N=100
-n=0:N;
+n=0:N-1;
 x0=10;
-w = -1+2*rand(1,N+1);
-x =(x0*cos(0.0008*pi*(n.^2))) + w
+w = -1+2*rand(1,N);
+x =(x0*cos(0.0008*pi*(n.^2))) +w
 stem(n,x)
 xlabel('n')
 title(' $x_4(n) = 10cos(0.0008\pi n^2) + w(n)$','interpreter','latex')
 
-%%
 % $x_5(n) = {...,1,2,3,2,1,2,3,2,...}$
 %
-%N=20
-%
-%y,n]  = stepseq(0,0,2)
+repmat([1 2 3 2],0,25)
 %% C. Sampling
 %Sampling is done by periodically obtaining samples from a continuous time
 %signal. The period also known as the sampling period is the reciprocal of
@@ -169,7 +163,7 @@ title(' $x_4(n) = 10cos(0.0008\pi n^2) + w(n)$','interpreter','latex')
 info=audioinfo('signal1.wav');
 t = 0:seconds(1/fs):seconds(info.Duration);
 t = t(1:end-1);
-
+figure
 plot(t,y)
 title('Original Audio')
 xlabel('Time')
@@ -297,15 +291,17 @@ ylabel('Signal magnitude in volts')
 axis([-0.1,20.1,-5.1,15.1]) 
 
 %%
-function y = adc_uni(x, R, B)
+function y = adc_NU(x, R, B)
 level = [0:R/(2^B):R-R/(2^B)];
 temp = [-Inf,(level(2:end)-R/(2^(B+1))),Inf];
+y = zeros(1,length(x));
 i=1
 y=(x >= temp(i)).*(x < temp(i+1)).*level(i)
 for i = 2:length(level)
     y = y + (x >= temp(i)).*(x < temp(i+1)).*level(i);
 end
 end
+
 
 %%
 function [x, t] = sin_NU(fs, f0, T) %function to generate sine signal
