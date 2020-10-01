@@ -19,7 +19,16 @@ plot(t,y)
 title('Original Audio')
 xlabel('Time')
 ylabel('Audio Signal')
-soundsc(y,fs)
+
+
+%%
+Q=16;
+q=2/(Q+1);
+target_sampling =48000;
+x1=downsample(y,fs/target_sampling);
+xq= q*(floor(x1/q));
+plot(xq)
+soundsc(xq,target_sampling)
 
 %% X1 R=10, B=16, downsampled by 2
 R=10
@@ -84,7 +93,9 @@ function y = adc_NU(x, R, B)
 level = [0:R/(2^B):R-R/(2^B)];
 temp = [-Inf,(level(2:end)-R/(2^(B+1))),Inf];
 y = zeros(1,length(x));
-for i = 1:length(level)
- y = y + (transpose(x) >= temp(i)).*(transpose(x) < temp(i+1)).*level(i);
+i=1
+y=(x >= temp(i)).*(x < temp(i+1)).*level(i)
+for i = 2:length(level)
+    y = y + (x >= temp(i)).*(x < temp(i+1)).*level(i);
 end
 end
