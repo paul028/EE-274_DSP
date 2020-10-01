@@ -1,5 +1,5 @@
-%% EE 274 Digital Signal Processing 1 Lab Activity 1
-% Name: Paul Vincent S. Nonat
+%% Paul Vincent S. Nonat 2018-21366
+% EE 274 Digital Signal Processing 1 Lab Activity 1
 %
 %% F. Audio File Formats
 %The following exercise will demonstrate the effects of using quantization 
@@ -37,7 +37,7 @@ title('16-Bit ADC, Sampling Rate-48000')
 xlabel('Time')
 
 
-%% X1 R=10, B=8, downsampled by 2
+%% X2 R=10, B=8, downsampled by 2
 R=10
 B=8
 target_sampling2 =48000
@@ -50,7 +50,7 @@ t2 = t2(1:end-1);
 plot(t2,x2) %generate plot
 title('8-Bit ADC, Sampling Rate-48000')
 xlabel('Time')
-%% X1 R=10, B=4, downsampled by 2
+%% X3 R=10, B=4, downsampled by 2
 R=10
 B=4
 target_sampling3 =48000
@@ -63,7 +63,7 @@ t3 = t3(1:end-1);
 plot(t3,x3) %generate plot
 title('4-Bit ADC, Sampling Rate-48000')
 xlabel('Time')
-%% X1 R=10, B=16, downsampled by 6
+%% X4 R=10, B=16, downsampled by 6
 R=10
 B=16
 target_sampling4 =16000
@@ -76,7 +76,7 @@ t4 = t4(1:end-1);
 plot(t4,x4) %generate plot
 title('16-Bit ADC, Sampling Rate-16000')
 xlabel('Time')
-%% X1 R=10, B=8, downsampled by 6
+%% X5 R=10, B=8, downsampled by 6
 R=10
 B=8
 target_sampling5 =16000
@@ -90,7 +90,7 @@ plot(t5,x5) %generate plot
 title('8-Bit ADC, Sampling Rate-16000')
 xlabel('Time')
 
-%% X1 R=10, B=4, downsampled by 6
+%% X6 R=10, B=4, downsampled by 6
 R=10
 B=4
 target_sampling6 =16000
@@ -104,7 +104,7 @@ plot(t6,x6) %generate plot
 title('4-Bit ADC, Sampling Rate-16000')
 xlabel('Time')
 
-%% X1 R=10, B=16, downsampled by 12
+%% X7 R=10, B=16, downsampled by 12
 R=10
 B=16
 target_sampling7 =8000
@@ -118,7 +118,7 @@ plot(t7,x7) %generate plot
 title('16-Bit ADC, Sampling Rate-8000')
 xlabel('Time')
 
-%% X1 R=10, B=8, downsampled by 12
+%% X8 R=10, B=8, downsampled by 12
 R=10
 B=8
 target_sampling8 =8000
@@ -132,7 +132,7 @@ plot(t8,x8) %generate plot
 title('8-Bit ADC, Sampling Rate-8000')
 xlabel('Time')
 
-%% X1 R=10, B=4, downsampled by 12
+%% X9 R=10, B=4, downsampled by 12
 R=10
 B=4
 target_sampling9 =8000

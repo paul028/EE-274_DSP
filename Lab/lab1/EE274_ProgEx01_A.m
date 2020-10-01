@@ -1,5 +1,5 @@
-%% EE 274 Digital Signal Processing 1 Lab Activity 1
-% Name: Paul Vincent S. Nonat
+%% Paul Vincent S. Nonat 2018-21366
+% EE 274 Digital Signal Processing 1 Lab Activity 1
 %
 
 %% A. Signal Generation
@@ -133,6 +133,7 @@ N=20
 n = 0:N;
 x0 = 0.9;
 x = (0.9^L)*cos(0.2*pi*n+(pi/3));
+figure
 stem(n,x)
 xlabel('n')
 title(' $x_3(n)= (0.9)^n cos(0.2\pi n + \frac{\pi}{3})$','interpreter','latex')
@@ -145,16 +146,21 @@ n=0:N;
 x0=10;
 w = -1+2*rand(1,N+1);
 x =(x0*cos(0.0008*pi*(n.^2))) + w
+figure
 stem(n,x)
 xlabel('n')
 title(' $x_4(n) = 10cos(0.0008\pi n^2) + w(n)$','interpreter','latex')
 
 %%
 % $x_5(n) = {...,1,2,3,2,1,2,3,2,...}$
-%
-%N=20
-%
-%y,n]  = stepseq(0,0,2)
+N=20
+n=0:N-1
+x=[1 2 3 2]
+x= [x x x x x]
+figure
+stem(n,x)
+xlabel('n')
+title(' $x_5(n) = {...,1,2,3,2,1,2,3,2,...}$','interpreter','latex')
 %% C. Sampling
 %Sampling is done by periodically obtaining samples from a continuous time
 %signal. The period also known as the sampling period is the reciprocal of
