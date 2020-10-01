@@ -26,7 +26,7 @@ Px=sum((y).^2)
 R=10
 B=16
 target_sampling1 =48000
-y1= adc_NU(y,R,B) %quantize
+y1= adc_uni(y,R,B) %quantize
 x1=downsample(y1,fs/target_sampling1) % downsample
 
 t1 = 0:seconds(1/(target_sampling1)):seconds(info.Duration);
@@ -41,7 +41,7 @@ xlabel('Time')
 R=10
 B=8
 target_sampling2 =48000
-y2= adc_NU(y,R,B) %quantize
+y2= adc_uni(y,R,B) %quantize
 x2=downsample(y2,fs/target_sampling2) % downsample
 
 t2 = 0:seconds(1/(target_sampling2)):seconds(info.Duration);
@@ -54,7 +54,7 @@ xlabel('Time')
 R=10
 B=4
 target_sampling3 =48000
-y3= adc_NU(y,R,B) %quantize
+y3= adc_uni(y,R,B) %quantize
 x3=downsample(y3,fs/target_sampling3) % downsample
 
 t3 = 0:seconds(1/(target_sampling3)):seconds(info.Duration);
@@ -67,7 +67,7 @@ xlabel('Time')
 R=10
 B=16
 target_sampling4 =16000
-y4= adc_NU(y,R,B) %quantize
+y4= adc_uni(y,R,B) %quantize
 x4=downsample(y4,fs/target_sampling4) % downsample
 
 t4 = 0:seconds(1/(target_sampling4)):seconds(info.Duration);
@@ -80,7 +80,7 @@ xlabel('Time')
 R=10
 B=8
 target_sampling5 =16000
-y5= adc_NU(y,R,B) %quantize
+y5= adc_uni(y,R,B) %quantize
 x5=downsample(y5,fs/target_sampling5) % downsample
 
 t5 = 0:seconds(1/(target_sampling5)):seconds(info.Duration);
@@ -94,7 +94,7 @@ xlabel('Time')
 R=10
 B=4
 target_sampling6 =16000
-y6= adc_NU(y,R,B) %quantize
+y6= adc_uni(y,R,B) %quantize
 x6=downsample(y6,fs/target_sampling6) % downsample
 
 t6 = 0:seconds(1/(target_sampling6)):seconds(info.Duration);
@@ -108,7 +108,7 @@ xlabel('Time')
 R=10
 B=16
 target_sampling7 =8000
-y7= adc_NU(y,R,B) %quantize
+y7= adc_uni(y,R,B) %quantize
 x7=downsample(y7,fs/target_sampling7) % downsample
 
 t7 = 0:seconds(1/(target_sampling7)):seconds(info.Duration);
@@ -122,7 +122,7 @@ xlabel('Time')
 R=10
 B=8
 target_sampling8 =8000
-y8= adc_NU(y,R,B) %quantize
+y8= adc_uni(y,R,B) %quantize
 x8=downsample(y8,fs/target_sampling8) % downsample
 
 t8 = 0:seconds(1/(target_sampling8)):seconds(info.Duration);
@@ -136,7 +136,7 @@ xlabel('Time')
 R=10
 B=4
 target_sampling9 =8000
-y9= adc_NU(y,R,B) %quantize
+y9= adc_uni(y,R,B) %quantize
 x9=downsample(y9,fs/target_sampling9) % downsample
 
 t9 = 0:seconds(1/(target_sampling9)):seconds(info.Duration);
@@ -186,7 +186,7 @@ SQNR9=10*log10(Px/Pq9)
 soundsc(x9,target_sampling9)
 
 %%
-function y = adc_NU(x, R, B)
+function y = adc_uni(x, R, B)
 level = [0:R/(2^B):R-R/(2^B)];
 temp = [-Inf,(level(2:end)-R/(2^(B+1))),Inf];
 y = zeros(1,length(x));
