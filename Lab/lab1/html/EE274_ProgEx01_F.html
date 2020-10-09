@@ -1,0 +1,443 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>Paul Vincent S. Nonat 2018-21366</title><meta name="generator" content="MATLAB 9.8"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2020-10-01"><meta name="DC.source" content="EE274_ProgEx01_F.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; }
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+span.typesection { color:#A0522D }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>Paul Vincent S. Nonat 2018-21366</h1><!--introduction--><p>EE 274 Digital Signal Processing 1 Lab Activity 1</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">F. Audio File Formats</a></li><li><a href="#3">X1 R=10, B=16, downsampled by 2</a></li><li><a href="#4">X2 R=10, B=8, downsampled by 2</a></li><li><a href="#5">X3 R=10, B=4, downsampled by 2</a></li><li><a href="#6">X4 R=10, B=16, downsampled by 6</a></li><li><a href="#7">X5 R=10, B=8, downsampled by 6</a></li><li><a href="#8">X6 R=10, B=4, downsampled by 6</a></li><li><a href="#9">X7 R=10, B=16, downsampled by 12</a></li><li><a href="#10">X8 R=10, B=8, downsampled by 12</a></li><li><a href="#11">X9 R=10, B=4, downsampled by 12</a></li></ul></div><h2 id="1">F. Audio File Formats</h2><pre class="codeinput"><span class="comment">%The following exercise will demonstrate the effects of using quantization</span>
+<span class="comment">%and sampling on audio signals.</span>
+<span class="comment">%</span>
+<span class="comment">% # Load music1.flac provided in UVLe folder. Can also be downloaded here</span>
+<span class="comment">% # Using the MATLAB functions you have created in parts A-E, quantize, up/</span>
+<span class="comment">%downsample using the following configurations:</span>
+</pre><pre class="codeinput">[y,fs] = audioread (<span class="string">'Sample_BeeMoved_96kHz24bit.flac'</span>)
+info =audioinfo(<span class="string">'Sample_BeeMoved_96kHz24bit.flac'</span>)
+t = 0:seconds(1/fs):seconds(info.Duration);
+t = t(1:end-1);
+figure
+plot(t,y)
+title(<span class="string">'Original Audio'</span>)
+xlabel(<span class="string">'Time'</span>)
+ylabel(<span class="string">'Audio Signal'</span>)
+Px=sum((y).^2)
+</pre><h2 id="3">X1 R=10, B=16, downsampled by 2</h2><pre class="codeinput">R=10
+B=16
+target_sampling1 =48000
+y1= adc_uni(y,R,B) <span class="comment">%quantize</span>
+x1=downsample(y1,fs/target_sampling1) <span class="comment">% downsample</span>
+
+t1 = 0:seconds(1/(target_sampling1)):seconds(info.Duration);
+t1 = t1(1:end-1);
+
+plot(t1,x1) <span class="comment">%generate plot</span>
+title(<span class="string">'16-Bit ADC, Sampling Rate-48000'</span>)
+xlabel(<span class="string">'Time'</span>)
+</pre><h2 id="4">X2 R=10, B=8, downsampled by 2</h2><pre class="codeinput">R=10
+B=8
+target_sampling2 =48000
+y2= adc_uni(y,R,B) <span class="comment">%quantize</span>
+x2=downsample(y2,fs/target_sampling2) <span class="comment">% downsample</span>
+
+t2 = 0:seconds(1/(target_sampling2)):seconds(info.Duration);
+t2 = t2(1:end-1);
+
+plot(t2,x2) <span class="comment">%generate plot</span>
+title(<span class="string">'8-Bit ADC, Sampling Rate-48000'</span>)
+xlabel(<span class="string">'Time'</span>)
+</pre><h2 id="5">X3 R=10, B=4, downsampled by 2</h2><pre class="codeinput">R=10
+B=4
+target_sampling3 =48000
+y3= adc_uni(y,R,B) <span class="comment">%quantize</span>
+x3=downsample(y3,fs/target_sampling3) <span class="comment">% downsample</span>
+
+t3 = 0:seconds(1/(target_sampling3)):seconds(info.Duration);
+t3 = t3(1:end-1);
+
+plot(t3,x3) <span class="comment">%generate plot</span>
+title(<span class="string">'4-Bit ADC, Sampling Rate-48000'</span>)
+xlabel(<span class="string">'Time'</span>)
+</pre><h2 id="6">X4 R=10, B=16, downsampled by 6</h2><pre class="codeinput">R=10
+B=16
+target_sampling4 =16000
+y4= adc_uni(y,R,B) <span class="comment">%quantize</span>
+x4=downsample(y4,fs/target_sampling4) <span class="comment">% downsample</span>
+
+t4 = 0:seconds(1/(target_sampling4)):seconds(info.Duration);
+t4 = t4(1:end-1);
+
+plot(t4,x4) <span class="comment">%generate plot</span>
+title(<span class="string">'16-Bit ADC, Sampling Rate-16000'</span>)
+xlabel(<span class="string">'Time'</span>)
+</pre><h2 id="7">X5 R=10, B=8, downsampled by 6</h2><pre class="codeinput">R=10
+B=8
+target_sampling5 =16000
+y5= adc_uni(y,R,B) <span class="comment">%quantize</span>
+x5=downsample(y5,fs/target_sampling5) <span class="comment">% downsample</span>
+
+t5 = 0:seconds(1/(target_sampling5)):seconds(info.Duration);
+t5 = t5(1:end-1);
+
+plot(t5,x5) <span class="comment">%generate plot</span>
+title(<span class="string">'8-Bit ADC, Sampling Rate-16000'</span>)
+xlabel(<span class="string">'Time'</span>)
+</pre><h2 id="8">X6 R=10, B=4, downsampled by 6</h2><pre class="codeinput">R=10
+B=4
+target_sampling6 =16000
+y6= adc_uni(y,R,B) <span class="comment">%quantize</span>
+x6=downsample(y6,fs/target_sampling6) <span class="comment">% downsample</span>
+
+t6 = 0:seconds(1/(target_sampling6)):seconds(info.Duration);
+t6 = t6(1:end-1);
+
+plot(t6,x6) <span class="comment">%generate plot</span>
+title(<span class="string">'4-Bit ADC, Sampling Rate-16000'</span>)
+xlabel(<span class="string">'Time'</span>)
+</pre><h2 id="9">X7 R=10, B=16, downsampled by 12</h2><pre class="codeinput">R=10
+B=16
+target_sampling7 =8000
+y7= adc_uni(y,R,B) <span class="comment">%quantize</span>
+x7=downsample(y7,fs/target_sampling7) <span class="comment">% downsample</span>
+
+t7 = 0:seconds(1/(target_sampling7)):seconds(info.Duration);
+t7 = t7(1:end-1);
+
+plot(t7,x7) <span class="comment">%generate plot</span>
+title(<span class="string">'16-Bit ADC, Sampling Rate-8000'</span>)
+xlabel(<span class="string">'Time'</span>)
+</pre><h2 id="10">X8 R=10, B=8, downsampled by 12</h2><pre class="codeinput">R=10
+B=8
+target_sampling8 =8000
+y8= adc_uni(y,R,B) <span class="comment">%quantize</span>
+x8=downsample(y8,fs/target_sampling8) <span class="comment">% downsample</span>
+
+t8 = 0:seconds(1/(target_sampling8)):seconds(info.Duration);
+t8 = t8(1:end-1);
+
+plot(t8,x8) <span class="comment">%generate plot</span>
+title(<span class="string">'8-Bit ADC, Sampling Rate-8000'</span>)
+xlabel(<span class="string">'Time'</span>)
+</pre><h2 id="11">X9 R=10, B=4, downsampled by 12</h2><pre class="codeinput">R=10
+B=4
+target_sampling9 =8000
+y9= adc_uni(y,R,B) <span class="comment">%quantize</span>
+x9=downsample(y9,fs/target_sampling9) <span class="comment">% downsample</span>
+
+t9 = 0:seconds(1/(target_sampling9)):seconds(info.Duration);
+t9 = t9(1:end-1);
+
+plot(t9,x9) <span class="comment">%generate plot</span>
+title(<span class="string">'8-Bit ADC, Sampling Rate-8000'</span>)
+xlabel(<span class="string">'Time'</span>)
+</pre><pre class="codeinput">Pq1=sum((y1-y).^2);
+SQNR1=10*log10(Px/Pq1)
+soundsc(x1,target_sampling1)
+</pre><pre class="codeinput">Pq2=sum((y2-y).^2);
+SQNR2=10*log10(Px/Pq2)
+soundsc(x2,target_sampling2)
+</pre><pre class="codeinput">Pq3=sum((y3-y).^2);
+SQNR3=10*log10(Px/Pq3)
+soundsc(x3,target_sampling3)
+</pre><pre class="codeinput">Pq4=sum((y4-y).^2);
+SQNR4=10*log10(Px/Pq4)
+soundsc(x4,target_sampling4)
+</pre><pre class="codeinput">Pq5=sum((y5-y).^2);
+SQNR5=10*log10(Px/Pq5)
+soundsc(x5,target_sampling5)
+</pre><pre class="codeinput">Pq6=sum((y6-y).^2);
+SQNR6=10*log10(Px/Pq6)
+soundsc(x6,target_sampling6)
+</pre><pre class="codeinput">Pq7=sum((y7-y).^2);
+SQNR7=10*log10(Px/Pq7)
+soundsc(x7,target_sampling7)
+</pre><pre class="codeinput">Pq8=sum((y8-y).^2);
+SQNR8=10*log10(Px/Pq8)
+soundsc(x8,target_sampling8)
+</pre><pre class="codeinput">Pq9=sum((y9-y).^2);
+SQNR9=10*log10(Px/Pq9)
+soundsc(x9,target_sampling9)
+</pre><pre class="codeinput"><span class="comment">%half bit resolution has more audible effect compared to using half the</span>
+<span class="comment">%sampling rate. Because, the more samples that are taken, the more details</span>
+<span class="comment">%about the audio is encoded. Hence, audio will become more audible.</span>
+<span class="comment">%</span>
+
+<span class="keyword">function</span> y = adc_uni(x, R, B)
+level = [0:R/(2^B):R-R/(2^B)];
+temp = [-Inf,(level(2:end)-R/(2^(B+1))),Inf];
+y = zeros(1,length(x));
+i=1
+y=(x &gt;= temp(i)).*(x &lt; temp(i+1)).*level(i)
+<span class="keyword">for</span> i = 2:length(level)
+    y = y + (x &gt;= temp(i)).*(x &lt; temp(i+1)).*level(i);
+<span class="keyword">end</span>
+<span class="keyword">end</span>
+</pre><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2020a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% Paul Vincent S. Nonat 2018-21366
+% EE 274 Digital Signal Processing 1 Lab Activity 1
+%
+%% F. Audio File Formats
+%The following exercise will demonstrate the effects of using quantization 
+%and sampling on audio signals. 
+% 
+% # Load music1.flac provided in UVLe folder. Can also be downloaded here
+% # Using the MATLAB functions you have created in parts A-E, quantize, up/
+%downsample using the following configurations:
+
+%%
+[y,fs] = audioread ('Sample_BeeMoved_96kHz24bit.flac')
+info =audioinfo('Sample_BeeMoved_96kHz24bit.flac')
+t = 0:seconds(1/fs):seconds(info.Duration);
+t = t(1:end-1);
+figure
+plot(t,y)
+title('Original Audio')
+xlabel('Time')
+ylabel('Audio Signal')
+Px=sum((y).^2)
+
+
+%% X1 R=10, B=16, downsampled by 2
+R=10
+B=16
+target_sampling1 =48000
+y1= adc_uni(y,R,B) %quantize
+x1=downsample(y1,fs/target_sampling1) % downsample
+
+t1 = 0:seconds(1/(target_sampling1)):seconds(info.Duration);
+t1 = t1(1:end-1);
+
+plot(t1,x1) %generate plot
+title('16-Bit ADC, Sampling Rate-48000')
+xlabel('Time')
+
+
+%% X2 R=10, B=8, downsampled by 2
+R=10
+B=8
+target_sampling2 =48000
+y2= adc_uni(y,R,B) %quantize
+x2=downsample(y2,fs/target_sampling2) % downsample
+
+t2 = 0:seconds(1/(target_sampling2)):seconds(info.Duration);
+t2 = t2(1:end-1);
+
+plot(t2,x2) %generate plot
+title('8-Bit ADC, Sampling Rate-48000')
+xlabel('Time')
+%% X3 R=10, B=4, downsampled by 2
+R=10
+B=4
+target_sampling3 =48000
+y3= adc_uni(y,R,B) %quantize
+x3=downsample(y3,fs/target_sampling3) % downsample
+
+t3 = 0:seconds(1/(target_sampling3)):seconds(info.Duration);
+t3 = t3(1:end-1);
+
+plot(t3,x3) %generate plot
+title('4-Bit ADC, Sampling Rate-48000')
+xlabel('Time')
+%% X4 R=10, B=16, downsampled by 6
+R=10
+B=16
+target_sampling4 =16000
+y4= adc_uni(y,R,B) %quantize
+x4=downsample(y4,fs/target_sampling4) % downsample
+
+t4 = 0:seconds(1/(target_sampling4)):seconds(info.Duration);
+t4 = t4(1:end-1);
+
+plot(t4,x4) %generate plot
+title('16-Bit ADC, Sampling Rate-16000')
+xlabel('Time')
+%% X5 R=10, B=8, downsampled by 6
+R=10
+B=8
+target_sampling5 =16000
+y5= adc_uni(y,R,B) %quantize
+x5=downsample(y5,fs/target_sampling5) % downsample
+
+t5 = 0:seconds(1/(target_sampling5)):seconds(info.Duration);
+t5 = t5(1:end-1);
+
+plot(t5,x5) %generate plot
+title('8-Bit ADC, Sampling Rate-16000')
+xlabel('Time')
+
+%% X6 R=10, B=4, downsampled by 6
+R=10
+B=4
+target_sampling6 =16000
+y6= adc_uni(y,R,B) %quantize
+x6=downsample(y6,fs/target_sampling6) % downsample
+
+t6 = 0:seconds(1/(target_sampling6)):seconds(info.Duration);
+t6 = t6(1:end-1);
+
+plot(t6,x6) %generate plot
+title('4-Bit ADC, Sampling Rate-16000')
+xlabel('Time')
+
+%% X7 R=10, B=16, downsampled by 12
+R=10
+B=16
+target_sampling7 =8000
+y7= adc_uni(y,R,B) %quantize
+x7=downsample(y7,fs/target_sampling7) % downsample
+
+t7 = 0:seconds(1/(target_sampling7)):seconds(info.Duration);
+t7 = t7(1:end-1);
+
+plot(t7,x7) %generate plot
+title('16-Bit ADC, Sampling Rate-8000')
+xlabel('Time')
+
+%% X8 R=10, B=8, downsampled by 12
+R=10
+B=8
+target_sampling8 =8000
+y8= adc_uni(y,R,B) %quantize
+x8=downsample(y8,fs/target_sampling8) % downsample
+
+t8 = 0:seconds(1/(target_sampling8)):seconds(info.Duration);
+t8 = t8(1:end-1);
+
+plot(t8,x8) %generate plot
+title('8-Bit ADC, Sampling Rate-8000')
+xlabel('Time')
+
+%% X9 R=10, B=4, downsampled by 12
+R=10
+B=4
+target_sampling9 =8000
+y9= adc_uni(y,R,B) %quantize
+x9=downsample(y9,fs/target_sampling9) % downsample
+
+t9 = 0:seconds(1/(target_sampling9)):seconds(info.Duration);
+t9 = t9(1:end-1);
+
+plot(t9,x9) %generate plot
+title('8-Bit ADC, Sampling Rate-8000')
+xlabel('Time')
+
+%%
+Pq1=sum((y1-y).^2);
+SQNR1=10*log10(Px/Pq1)
+soundsc(x1,target_sampling1)
+%%
+Pq2=sum((y2-y).^2);
+SQNR2=10*log10(Px/Pq2)
+soundsc(x2,target_sampling2)
+%%
+Pq3=sum((y3-y).^2);
+SQNR3=10*log10(Px/Pq3)
+soundsc(x3,target_sampling3)
+%%
+Pq4=sum((y4-y).^2);
+SQNR4=10*log10(Px/Pq4)
+soundsc(x4,target_sampling4)
+
+%%
+Pq5=sum((y5-y).^2);
+SQNR5=10*log10(Px/Pq5)
+soundsc(x5,target_sampling5)
+%%
+Pq6=sum((y6-y).^2);
+SQNR6=10*log10(Px/Pq6)
+soundsc(x6,target_sampling6)
+%%
+Pq7=sum((y7-y).^2);
+SQNR7=10*log10(Px/Pq7)
+soundsc(x7,target_sampling7)
+
+%%
+Pq8=sum((y8-y).^2);
+SQNR8=10*log10(Px/Pq8)
+soundsc(x8,target_sampling8)
+%%
+Pq9=sum((y9-y).^2);
+SQNR9=10*log10(Px/Pq9)
+soundsc(x9,target_sampling9)
+
+%%
+%%
+%half bit resolution has more audible effect compared to using half the 
+%sampling rate. Because, the more samples that are taken, the more details 
+%about the audio is encoded. Hence, audio will become more audible. 
+% 
+
+function y = adc_uni(x, R, B)
+level = [0:R/(2^B):R-R/(2^B)];
+temp = [-Inf,(level(2:end)-R/(2^(B+1))),Inf];
+y = zeros(1,length(x));
+i=1
+y=(x >= temp(i)).*(x < temp(i+1)).*level(i)
+for i = 2:length(level)
+    y = y + (x >= temp(i)).*(x < temp(i+1)).*level(i);
+end
+end
+##### SOURCE END #####
+--></body></html>

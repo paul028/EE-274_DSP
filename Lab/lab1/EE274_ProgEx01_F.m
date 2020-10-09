@@ -186,6 +186,12 @@ SQNR9=10*log10(Px/Pq9)
 soundsc(x9,target_sampling9)
 
 %%
+%%
+%half bit resolution has more audible effect compared to using half the 
+%sampling rate. Because, the more samples that are taken, the more details 
+%about the audio is encoded. Hence, audio will become more audible. 
+% 
+
 function y = adc_uni(x, R, B)
 level = [0:R/(2^B):R-R/(2^B)];
 temp = [-Inf,(level(2:end)-R/(2^(B+1))),Inf];
