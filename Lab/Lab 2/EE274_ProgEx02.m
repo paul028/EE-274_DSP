@@ -83,231 +83,75 @@ stem(1:5,y(1:5)); title('output signal');
 %to have an insight on the filter / frequency response)
 
 %%
-% Input Signals
+% Load Input Signals Input Signals
 [x1,fs1] = audioread('inputs/x1.wav');
-info=audioinfo('inputs/x1.wav');
-t1 = 0:seconds(1/fs1):seconds(info.Duration);
-t1 = t1(1:end-1);
-
+%divide x1 signal into two channel for computational convenience
+x1_c1 = x1(:,1); 
+x1_c2 = x1(:,2);
 [x2,fs2] = audioread('inputs/x2.wav');
-info=audioinfo('inputs/x2.wav');
-t2 = 0:seconds(1/fs2):seconds(info.Duration);
-t2 = t2(1:end-1);
 
 [x3,fs3] = audioread('inputs/x3.wav');
-info=audioinfo('inputs/x1.wav');
-t3 = 0:seconds(1/fs3):seconds(info.Duration);
-t3 = t3(1:end-1);
 
 [x4,fs4] = audioread('inputs/x4.wav');
-info=audioinfo('inputs/x4.wav');
-t4 = 0:seconds(1/fs4):seconds(info.Duration);
-t4 = t4(1:end-1);
 
 [x5,fs5] = audioread('inputs/x5.wav');
-info=audioinfo('inputs/x5.wav');
-t5 = 0:seconds(1/fs5):seconds(info.Duration);
-t5 = t5(1:end-1);
 
 %%
-% System 1
+%
+%Simulate System 1
 % <<system1.PNG>>
-y1_1=dt_1(x1)
-figure;
-subplot 211
-stem(x1)
-title('input signal (x1)')
-subplot 212
-stem(y1_1)
-title('output signal (y1_1)')
-
+y1_c1=dt_1(x1_c1)
+y1_c2=dt_1(x1_c2)
 y1_2=dt_1(x2)
-figure;
-subplot 211
-stem(x2)
-title('input signal (x2)')
-subplot 212
-stem(y1_2)
-title('output signal (y1_2)')
-
 y1_3=dt_1(x3)
-figure;
-subplot 211
-stem(x3)
-title('input signal (x3)')
-subplot 212
-stem(y1_3)
-title('output signal (y1_3)')
-
 y1_4=dt_1(x4)
-figure;
-subplot 211
-stem(x4)
-title('input signal (x4)')
-subplot 212
-stem(y1_4)
-title('output signal (y1_4)')
-
 y1_5=dt_1(x5)
-figure;
-subplot 211
-stem(x5)
-title('input signal (x5)')
-subplot 212
-stem(y1_5)
-title('output signal (y1_5)')
-
-% Answer to # 4
 
 %%
-% System 2
+%Simulate System 2
 % <<system2.PNG>>
-y2_1=dt_2(x1)
-figure;
-subplot 211
-stem(x1)
-title('input signal (x1)')
-subplot 212
-stem(y2_1)
-title('output signal (y2_1)')
-
+y2_c1=dt_2(x1_c1)
+y2_c2=dt_2(x1_c2)
 y2_2=dt_2(x2)
-figure;
-subplot 211
-stem(x2)
-title('input signal (x2)')
-subplot 212
-stem(y2_2)
-title('output signal (y2_2)')
-
 y2_3=dt_2(x3)
-figure;
-subplot 211
-stem(x3)
-title('input signal (x3)')
-subplot 212
-stem(y2_3)
-title('output signal (y2_3)')
-
 y2_4=dt_2(x4)
-figure;
-subplot 211
-stem(x4)
-title('input signal (x4)')
-subplot 212
-stem(y2_4)
-title('output signal (y2_4)')
-
 y2_5=dt_2(x5)
-figure;
-subplot 211
-stem(x5)
-title('input signal (x5)')
-subplot 212
-stem(y2_5)
-title('output signal (y2_5)')
-
-% Answer to # 4
 
 %%
-% System 3
-% <<system3.PNG>>
-y3_1=dt_3(x1)
-figure;
-subplot 211
-stem(x1)
-title('input signal (x1)')
-subplot 212
-stem(y3_1)
-title('output signal (y3_1)')
-
+%Simulate System 3
+y3_c1=dt_3(x1_c1)
+y3_c2=dt_3(x1_c2)
 y3_2=dt_3(x2)
-figure;
-subplot 211
-stem(x2)
-title('input signal (x2)')
-subplot 212
-stem(y3_2)
-title('output signal (y3_2)')
-
 y3_3=dt_3(x3)
-figure;
-subplot 211
-stem(x3)
-title('input signal (x3)')
-subplot 212
-stem(y3_3)
-title('output signal (y3_3)')
-
 y3_4=dt_3(x4)
-figure;
-subplot 211
-stem(x4)
-title('input signal (x4)')
-subplot 212
-stem(y3_4)
-title('output signal (y3_4)')
-
 y3_5=dt_3(x5)
-figure;
-subplot 211
-stem(x5)
-title('input signal (x5)')
-subplot 212
-stem(y3_5)
-title('output signal (y3_5)')
-
-% Answer to # 4
 
 %%
-% System 4
-% <<system4.PNG>>
-L=100
-y4_1=dt_4(x1,L)
-figure;
-subplot 211
-stem(x1)
-title('input signal (x1)')
-subplot 212
-stem(y4_1)
-title('output signal (y4_1)')
+%Simulate System 4
+L1=50
+L2=100
+L3=400
 
-y4_2=dt_4(x2,L)
-figure;
-subplot 211
-stem(x2)
-title('input signal (x2)')
-subplot 212
-stem(y4_2)
-title('output signal (y4_2)')
+y4_c1_L1=dt_4(x1_c1,L1)
+y4_c1_L2=dt_4(x1_c1,L2)
+y4_c1_L3=dt_4(x1_c1,L3)
 
-y4_3=dt_3(x3,L)
-figure;
-subplot 211
-stem(x3)
-title('input signal (x3)')
-subplot 212
-stem(y4_3)
-title('output signal (y4_3)')
+y4_c2_L1=dt_4(x1_c1,L1)
+y4_c2_L2=dt_4(x1_c1,L2)
+y4_c2_L3=dt_4(x1_c1,L3)
 
-y4_4=dt_4(x4,L)
-figure;
-subplot 211
-stem(x4)
-title('input signal (x4)')
-subplot 212
-stem(y4_4)
-title('output signal (y4_4)')
+y4_2_L1=dt_4(x2,L1)
+y4_2_L2=dt_4(x2,L2)
+y4_2_L3=dt_4(x2,L3)
 
-y4_5=dt_4(x5)
-figure;
-subplot 211
-stem(x5)
-title('input signal (x5)')
-subplot 212
-stem(y4_5)
-title('output signal (y4_5)')
+y4_3_L1=dt_4(x3,L1)
+y4_3_L2=dt_4(x3,L2)
+y4_3_L3=dt_4(x3,L3)
 
-% Answer to # 4
+y4_4_L1=dt_4(x4,L1)
+y4_4_L2=dt_4(x4,L2)
+y4_4_L3=dt_4(x4,L3)
 
-
+y4_5_L1=dt_4(x5,L1)
+y4_5_L2=dt_4(x5,L2)
+y4_5_L3=dt_4(x5,L3)

@@ -8,3 +8,4 @@ for n=1:length(x);
         y(n) = 0.5*x(n) + 0.5*x(n-1)
     end
 end
+end
