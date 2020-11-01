@@ -1,4 +1,0 @@
-function y=dt_3(x)
-b = [1 5]; a = [1 -2];
-h = impz(b,a); %impulse response
-y = conv(h,x);

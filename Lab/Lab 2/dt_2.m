@@ -1,5 +1,5 @@
 function y=dt_2(x)
-y= zeros(1,length(x));
+y= zeros(1,length(x)); % zero initialization
 
 for n=1:length(x);
     if n==1
